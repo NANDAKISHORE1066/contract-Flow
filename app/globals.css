@@ -1,131 +1,146 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @theme inline {
-  /* Updated color tokens to match professional red-based design brief */
+  /* Enhanced color tokens with professional red-based design */
   --color-background: 0 0% 100%;
-  --color-foreground: 220 13% 22%;
-  --color-card: 0 100% 99%;
-  --color-card-foreground: 220 13% 22%;
+  --color-foreground: 222 84% 4.9%;
+  --color-card: 0 0% 100%;
+  --color-card-foreground: 222 84% 4.9%;
   --color-popover: 0 0% 100%;
-  --color-popover-foreground: 220 13% 22%;
-  --color-primary: 0 84% 50%;
-  --color-primary-foreground: 0 0% 100%;
+  --color-popover-foreground: 222 84% 4.9%;
+  --color-primary: 0 72% 51%;
+  --color-primary-foreground: 210 40% 98%;
   --color-secondary: 43 96% 56%;
-  --color-secondary-foreground: 0 0% 100%;
-  --color-muted: 0 100% 99%;
-  --color-muted-foreground: 220 13% 22%;
+  --color-secondary-foreground: 222 84% 4.9%;
+  --color-muted: 210 40% 96%;
+  --color-muted-foreground: 215.4 16.3% 46.9%;
   --color-accent: 43 96% 56%;
-  --color-accent-foreground: 0 0% 100%;
-  --color-destructive: 0 84% 50%;
-  --color-destructive-foreground: 0 0% 100%;
-  --color-border: 220 13% 91%;
-  --color-input: 0 0% 100%;
-  --color-ring: 0 84% 50%;
-  --color-chart-1: 0 84% 50%;
+  --color-accent-foreground: 222 84% 4.9%;
+  --color-destructive: 0 84% 60%;
+  --color-destructive-foreground: 210 40% 98%;
+  --color-border: 214.3 31.8% 91.4%;
+  --color-input: 214.3 31.8% 91.4%;
+  --color-ring: 0 72% 51%;
+  --color-chart-1: 0 72% 51%;
   --color-chart-2: 43 96% 56%;
-  --color-chart-3: 220 13% 22%;
-  --color-chart-4: 0 100% 99%;
-  --color-chart-5: 210 40% 98%;
+  --color-chart-3: 222 84% 4.9%;
+  --color-chart-4: 210 40% 96%;
+  --color-chart-5: 220 14.3% 95.9%;
   --radius: 0.75rem;
-  --color-sidebar: 0 100% 99%;
-  --color-sidebar-foreground: 220 13% 22%;
-  --color-sidebar-primary: 0 84% 50%;
-  --color-sidebar-primary-foreground: 0 0% 100%;
-  --color-sidebar-accent: 43 96% 56%;
-  --color-sidebar-accent-foreground: 0 0% 100%;
-  --color-sidebar-border: 220 13% 91%;
-  --color-sidebar-ring: 0 84% 50%;
+
+  /* Font variables */
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   @theme {
-    --color-background: 222 84% 5%;
+    --color-background: 222 84% 4.9%;
     --color-foreground: 210 40% 98%;
-    --color-card: 215 28% 17%;
+    --color-card: 222 84% 4.9%;
     --color-card-foreground: 210 40% 98%;
-    --color-popover: 215 28% 17%;
+    --color-popover: 222 84% 4.9%;
     --color-popover-foreground: 210 40% 98%;
     --color-primary: 0 72% 51%;
-    --color-primary-foreground: 0 0% 100%;
+    --color-primary-foreground: 210 40% 98%;
     --color-secondary: 43 96% 56%;
-    --color-secondary-foreground: 0 0% 100%;
-    --color-muted: 215 32% 27%;
-    --color-muted-foreground: 217 32% 65%;
+    --color-secondary-foreground: 210 40% 98%;
+    --color-muted: 217.2 32.6% 17.5%;
+    --color-muted-foreground: 215 20.2% 65.1%;
     --color-accent: 43 96% 56%;
-    --color-accent-foreground: 0 0% 100%;
-    --color-destructive: 0 63% 31%;
-    --color-destructive-foreground: 0 0% 100%;
-    --color-border: 215 32% 27%;
-    --color-input: 215 28% 17%;
+    --color-accent-foreground: 210 40% 98%;
+    --color-destructive: 0 62.8% 30.6%;
+    --color-destructive-foreground: 210 40% 98%;
+    --color-border: 217.2 32.6% 17.5%;
+    --color-input: 217.2 32.6% 17.5%;
     --color-ring: 0 72% 51%;
     --color-chart-1: 0 72% 51%;
     --color-chart-2: 43 96% 56%;
-    --color-chart-3: 217 32% 65%;
-    --color-chart-4: 215 32% 27%;
-    --color-chart-5: 215 28% 17%;
-    --color-sidebar: 215 28% 17%;
-    --color-sidebar-foreground: 210 40% 98%;
-    --color-sidebar-primary: 0 72% 51%;
-    --color-sidebar-primary-foreground: 0 0% 100%;
-    --color-sidebar-accent: 43 96% 56%;
-    --color-sidebar-accent-foreground: 0 0% 100%;
-    --color-sidebar-border: 215 32% 27%;
-    --color-sidebar-ring: 0 72% 51%;
+    --color-chart-3: 215 20.2% 65.1%;
+    --color-chart-4: 217.2 32.6% 17.5%;
+    --color-chart-5: 220 14.3% 95.9%;
   }
 }
 
-/* Enhanced body styling with better typography and spacing */
-body {
-  background-color: hsl(var(--color-background));
-  color: hsl(var(--color-foreground));
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
-  letter-spacing: -0.01em;
-}
-
-/* Added custom scrollbar styling for better aesthetics */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: hsl(var(--color-muted));
-}
-
-::-webkit-scrollbar-thumb {
-  background: hsl(var(--color-border));
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--color-muted-foreground) / 0.3);
-}
-
-/* Enhanced border color inheritance */
+/* Enhanced base styles */
 * {
   border-color: hsl(var(--color-border));
 }
 
-/* Added smooth transitions for better UX */
-.transition-all {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+body {
+  background-color: hsl(var(--color-background));
+  color: hsl(var(--color-foreground));
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
-/* Added glass morphism effect for cards */
+/* Enhanced scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--color-muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--color-border));
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--color-muted-foreground) / 0.4);
+}
+
+/* Enhanced utility classes */
 .glass-card {
   background: hsl(var(--color-card) / 0.8);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   border: 1px solid hsl(var(--color-border) / 0.2);
+  box-shadow: 0 8px 32px hsl(var(--color-foreground) / 0.04);
 }
 
-/* Added gradient backgrounds for enhanced visual appeal */
 .gradient-bg {
-  background: linear-gradient(135deg, hsl(var(--color-background)) 0%, hsl(var(--color-muted)) 100%);
+  background: linear-gradient(
+    135deg,
+    hsl(var(--color-background)) 0%,
+    hsl(var(--color-muted) / 0.3) 50%,
+    hsl(var(--color-background)) 100%
+  );
 }
 
 .primary-gradient {
   background: linear-gradient(135deg, hsl(var(--color-primary)) 0%, hsl(var(--color-primary) / 0.8) 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, hsl(var(--color-primary)) 0%, hsl(var(--color-secondary)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Enhanced animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Enhanced focus styles */
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
 }

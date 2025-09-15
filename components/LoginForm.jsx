@@ -7,7 +7,7 @@ import { Input } from "./ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
 import { Label } from "./ui/label"
 import { Alert, AlertDescription } from "./ui/alert"
-import { Loader2 } from "./ui/icons"
+import { Loader2, Shield } from "./ui/icons"
 
 export default function LoginForm({ onSuccess }) {
   const [username, setUsername] = useState("")
@@ -32,60 +32,81 @@ export default function LoginForm({ onSuccess }) {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 to-secondary/5 p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold text-primary">ContractFlow</CardTitle>
-          <CardDescription>Sign in to your contracts management dashboard</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="username">Username</Label>
-              <Input
-                id="username"
-                type="text"
-                placeholder="Enter your username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-                disabled={loading}
-              />
+    <div className="min-h-screen flex items-center justify-center gradient-bg p-4">
+      <div className="w-full max-w-md animate-fade-in">
+        <Card className="glass-card shadow-2xl border-0">
+          <CardHeader className="text-center space-y-4 pb-8">
+            <div className="mx-auto w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center">
+              <Shield className="w-8 h-8 text-primary" />
             </div>
-
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                disabled={loading}
-              />
-              <p className="text-xs text-muted-foreground">Use "test123" as password for demo</p>
+              <CardTitle className="text-3xl font-bold text-gradient">ContractFlow</CardTitle>
+              <CardDescription className="text-base text-muted-foreground">
+                Sign in to your contracts management dashboard
+              </CardDescription>
             </div>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="space-y-2">
+                <Label htmlFor="username" className="text-sm font-medium">
+                  Username
+                </Label>
+                <Input
+                  id="username"
+                  type="text"
+                  placeholder="Enter your username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                  disabled={loading}
+                  className="h-11 focus-ring transition-all duration-200"
+                />
+              </div>
 
-            {error && (
-              <Alert variant="destructive">
-                <AlertDescription>{error}</AlertDescription>
-              </Alert>
-            )}
+              <div className="space-y-2">
+                <Label htmlFor="password" className="text-sm font-medium">
+                  Password
+                </Label>
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  disabled={loading}
+                  className="h-11 focus-ring transition-all duration-200"
+                />
+                <p className="text-xs text-muted-foreground bg-muted/50 px-3 py-2 rounded-md">
+                  💡 Use "test123" as password for demo
+                </p>
+              </div>
 
-            <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Signing in...
-                </>
-              ) : (
-                "Sign In"
+              {error && (
+                <Alert variant="destructive" className="animate-fade-in">
+                  <AlertDescription className="text-sm">{error}</AlertDescription>
+                </Alert>
               )}
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
+
+              <Button
+                type="submit"
+                className="w-full h-11 primary-gradient hover:opacity-90 transition-all duration-200 font-medium"
+                disabled={loading}
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Signing in...
+                  </>
+                ) : (
+                  "Sign In"
+                )}
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   )
 }
