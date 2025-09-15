@@ -103,134 +103,167 @@ export default function ContractsList({ onViewContract, onUpload }) {
   }
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-8 space-y-8 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="flex justify-between items-center">
-        <div>
-          <h1 className="text-2xl font-bold text-foreground">Contracts</h1>
-          <p className="text-muted-foreground">Manage and monitor your contract portfolio</p>
+      <div className="flex justify-between items-start">
+        <div className="space-y-2">
+          <h1 className="text-4xl font-bold text-foreground tracking-tight">Contracts</h1>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Manage and monitor your contract portfolio with confidence
+          </p>
         </div>
-        <Button onClick={onUpload} className="gap-2">
-          <Upload className="h-4 w-4" />
+        <Button
+          onClick={onUpload}
+          className="gap-3 px-6 py-3 text-base font-medium shadow-lg hover:shadow-xl transition-all duration-200 bg-primary hover:bg-primary/90"
+        >
+          <Upload className="h-5 w-5" />
           Upload Contract
         </Button>
       </div>
 
-      {/* Filters */}
-      <Card>
-        <CardContent className="pt-6">
-          <div className="flex flex-col md:flex-row gap-4">
+      <Card className="glass-card shadow-lg border-0">
+        <CardContent className="pt-8">
+          <div className="flex flex-col lg:flex-row gap-6">
             <div className="flex-1">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
-                  placeholder="Search contracts or parties..."
+                  placeholder="Search contracts, parties, or terms..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10"
+                  className="pl-12 h-12 text-base border-2 focus:border-primary/50 transition-colors"
                 />
               </div>
             </div>
-            <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger className="w-full md:w-48">
-                <SelectValue placeholder="Filter by status" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Statuses</SelectItem>
-                <SelectItem value="Active">Active</SelectItem>
-                <SelectItem value="Expired">Expired</SelectItem>
-                <SelectItem value="Renewal Due">Renewal Due</SelectItem>
-              </SelectContent>
-            </Select>
-            <Select value={riskFilter} onValueChange={setRiskFilter}>
-              <SelectTrigger className="w-full md:w-48">
-                <SelectValue placeholder="Filter by risk" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Risk Levels</SelectItem>
-                <SelectItem value="High">High Risk</SelectItem>
-                <SelectItem value="Medium">Medium Risk</SelectItem>
-                <SelectItem value="Low">Low Risk</SelectItem>
-              </SelectContent>
-            </Select>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Select value={statusFilter} onValueChange={setStatusFilter}>
+                <SelectTrigger className="w-full sm:w-56 h-12 border-2 focus:border-primary/50">
+                  <SelectValue placeholder="Filter by status" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Statuses</SelectItem>
+                  <SelectItem value="Active">Active</SelectItem>
+                  <SelectItem value="Expired">Expired</SelectItem>
+                  <SelectItem value="Renewal Due">Renewal Due</SelectItem>
+                </SelectContent>
+              </Select>
+              <Select value={riskFilter} onValueChange={setRiskFilter}>
+                <SelectTrigger className="w-full sm:w-56 h-12 border-2 focus:border-primary/50">
+                  <SelectValue placeholder="Filter by risk" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Risk Levels</SelectItem>
+                  <SelectItem value="High">High Risk</SelectItem>
+                  <SelectItem value="Medium">Medium Risk</SelectItem>
+                  <SelectItem value="Low">Low Risk</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
         </CardContent>
       </Card>
 
       {/* Contracts Table */}
       {filteredContracts.length === 0 ? (
-        <Card>
-          <CardContent className="pt-6">
-            <div className="text-center py-12">
-              <FileText className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-              <h3 className="text-lg font-semibold mb-2">No contracts found</h3>
-              <p className="text-muted-foreground mb-4">
+        <Card className="glass-card shadow-lg border-0">
+          <CardContent className="pt-8">
+            <div className="text-center py-16">
+              <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-muted/50 flex items-center justify-center">
+                <FileText className="h-12 w-12 text-muted-foreground" />
+              </div>
+              <h3 className="text-2xl font-semibold mb-3 text-foreground">No contracts found</h3>
+              <p className="text-lg text-muted-foreground mb-8 max-w-md mx-auto leading-relaxed">
                 {searchTerm || statusFilter !== "all" || riskFilter !== "all"
-                  ? "Try adjusting your filters"
-                  : "Upload your first contract to get started"}
+                  ? "Try adjusting your filters to find what you're looking for"
+                  : "Upload your first contract to get started with professional contract management"}
               </p>
-              <Button onClick={onUpload}>Upload Contract</Button>
+              <Button
+                onClick={onUpload}
+                size="lg"
+                className="px-8 py-3 text-base font-medium shadow-lg hover:shadow-xl transition-all duration-200"
+              >
+                <Upload className="h-5 w-5 mr-2" />
+                Upload Contract
+              </Button>
             </div>
           </CardContent>
         </Card>
       ) : (
-        <Card>
-          <CardHeader>
-            <CardTitle>Contract Portfolio</CardTitle>
-            <CardDescription>
-              Showing {paginatedContracts.length} of {filteredContracts.length} contracts
-            </CardDescription>
+        <Card className="glass-card shadow-lg border-0">
+          <CardHeader className="pb-6">
+            <div className="flex justify-between items-center">
+              <div>
+                <CardTitle className="text-2xl font-semibold text-foreground">Contract Portfolio</CardTitle>
+                <CardDescription className="text-base text-muted-foreground mt-2">
+                  Showing {paginatedContracts.length} of {filteredContracts.length} contracts
+                </CardDescription>
+              </div>
+            </div>
           </CardHeader>
           <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Contract Name</TableHead>
-                  <TableHead>Parties</TableHead>
-                  <TableHead>Expiry Date</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Risk Score</TableHead>
-                  <TableHead className="text-right">Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {paginatedContracts.map((contract) => (
-                  <TableRow key={contract.id}>
-                    <TableCell className="font-medium">{contract.name}</TableCell>
-                    <TableCell>{contract.parties}</TableCell>
-                    <TableCell>{new Date(contract.expiry).toLocaleDateString()}</TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-2">
-                        {getStatusIcon(contract.status)}
-                        <span>{contract.status}</span>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <Badge variant={getRiskBadgeVariant(contract.risk)}>{contract.risk}</Badge>
-                    </TableCell>
-                    <TableCell className="text-right">
-                      <Button variant="ghost" size="sm" onClick={() => onViewContract(contract.id)} className="gap-2">
-                        <Eye className="h-4 w-4" />
-                        View
-                      </Button>
-                    </TableCell>
+            <div className="rounded-lg border-2 border-border/50 overflow-hidden">
+              <Table>
+                <TableHeader>
+                  <TableRow className="bg-muted/30 hover:bg-muted/40">
+                    <TableHead className="font-semibold text-foreground py-4">Contract Name</TableHead>
+                    <TableHead className="font-semibold text-foreground py-4">Parties</TableHead>
+                    <TableHead className="font-semibold text-foreground py-4">Expiry Date</TableHead>
+                    <TableHead className="font-semibold text-foreground py-4">Status</TableHead>
+                    <TableHead className="font-semibold text-foreground py-4">Risk Score</TableHead>
+                    <TableHead className="text-right font-semibold text-foreground py-4">Actions</TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                </TableHeader>
+                <TableBody>
+                  {paginatedContracts.map((contract, index) => (
+                    <TableRow
+                      key={contract.id}
+                      className="hover:bg-muted/20 transition-colors duration-150 border-border/30"
+                    >
+                      <TableCell className="font-medium text-foreground py-4 text-base">{contract.name}</TableCell>
+                      <TableCell className="text-muted-foreground py-4 text-base">{contract.parties}</TableCell>
+                      <TableCell className="text-muted-foreground py-4 text-base">
+                        {new Date(contract.expiry).toLocaleDateString()}
+                      </TableCell>
+                      <TableCell className="py-4">
+                        <div className="flex items-center gap-3">
+                          {getStatusIcon(contract.status)}
+                          <span className="text-base font-medium">{contract.status}</span>
+                        </div>
+                      </TableCell>
+                      <TableCell className="py-4">
+                        <Badge variant={getRiskBadgeVariant(contract.risk)} className="px-3 py-1 text-sm font-medium">
+                          {contract.risk}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="text-right py-4">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => onViewContract(contract.id)}
+                          className="gap-2 hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2"
+                        >
+                          <Eye className="h-4 w-4" />
+                          View
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
 
-            {/* Pagination */}
             {totalPages > 1 && (
-              <div className="flex items-center justify-between mt-4">
-                <p className="text-sm text-muted-foreground">
+              <div className="flex items-center justify-between mt-8 pt-6 border-t border-border/50">
+                <p className="text-base text-muted-foreground">
                   Page {currentPage} of {totalPages}
                 </p>
-                <div className="flex gap-2">
+                <div className="flex gap-3">
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
                     disabled={currentPage === 1}
+                    className="px-4 py-2 border-2 hover:border-primary/50 transition-colors"
                   >
                     Previous
                   </Button>
@@ -239,6 +272,7 @@ export default function ContractsList({ onViewContract, onUpload }) {
                     size="sm"
                     onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
                     disabled={currentPage === totalPages}
+                    className="px-4 py-2 border-2 hover:border-primary/50 transition-colors"
                   >
                     Next
                   </Button>

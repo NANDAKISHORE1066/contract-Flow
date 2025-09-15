@@ -55,11 +55,13 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex h-screen bg-background">
+    <div className="flex h-screen bg-gradient-to-br from-background via-muted/20 to-background">
       <Sidebar currentView={currentView} onViewChange={setCurrentView} />
       <div className="flex-1 flex flex-col overflow-hidden">
         <TopBar />
-        <main className="flex-1 overflow-auto">{renderMainContent()}</main>
+        <main className="flex-1 overflow-auto bg-gradient-to-b from-transparent to-muted/10">
+          {renderMainContent()}
+        </main>
       </div>
       <UploadModal isOpen={isUploadModalOpen} onClose={() => setIsUploadModalOpen(false)} />
     </div>

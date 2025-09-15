@@ -2,43 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Removed the problematic @import "tailwindcss" line that was causing build errors */
-
 @theme inline {
-  /* Updated color tokens to match professional SaaS design brief */
+  /* Updated color tokens to match professional red-based design brief */
   --color-background: 0 0% 100%;
-  --color-foreground: 215 16% 47%;
-  --color-card: 187 100% 94%;
-  --color-card-foreground: 195 100% 13%;
+  --color-foreground: 220 13% 22%;
+  --color-card: 0 100% 99%;
+  --color-card-foreground: 220 13% 22%;
   --color-popover: 0 0% 100%;
-  --color-popover-foreground: 215 16% 47%;
-  --color-primary: 195 100% 13%;
+  --color-popover-foreground: 220 13% 22%;
+  --color-primary: 0 84% 50%;
   --color-primary-foreground: 0 0% 100%;
-  --color-secondary: 258 90% 66%;
+  --color-secondary: 43 96% 56%;
   --color-secondary-foreground: 0 0% 100%;
-  --color-muted: 210 40% 96%;
-  --color-muted-foreground: 220 9% 46%;
-  --color-accent: 258 90% 66%;
+  --color-muted: 0 100% 99%;
+  --color-muted-foreground: 220 13% 22%;
+  --color-accent: 43 96% 56%;
   --color-accent-foreground: 0 0% 100%;
-  --color-destructive: 0 84% 60%;
+  --color-destructive: 0 84% 50%;
   --color-destructive-foreground: 0 0% 100%;
   --color-border: 220 13% 91%;
-  --color-input: 220 13% 91%;
-  --color-ring: 195 100% 13%;
-  --color-chart-1: 220 9% 46%;
-  --color-chart-2: 258 90% 66%;
-  --color-chart-3: 0 84% 60%;
-  --color-chart-4: 43 96% 56%;
-  --color-chart-5: 195 100% 13%;
-  --radius: 0.5rem;
-  --color-sidebar: 0 0% 100%;
-  --color-sidebar-foreground: 215 16% 47%;
-  --color-sidebar-primary: 195 100% 13%;
+  --color-input: 0 0% 100%;
+  --color-ring: 0 84% 50%;
+  --color-chart-1: 0 84% 50%;
+  --color-chart-2: 43 96% 56%;
+  --color-chart-3: 220 13% 22%;
+  --color-chart-4: 0 100% 99%;
+  --color-chart-5: 210 40% 98%;
+  --radius: 0.75rem;
+  --color-sidebar: 0 100% 99%;
+  --color-sidebar-foreground: 220 13% 22%;
+  --color-sidebar-primary: 0 84% 50%;
   --color-sidebar-primary-foreground: 0 0% 100%;
-  --color-sidebar-accent: 258 90% 66%;
+  --color-sidebar-accent: 43 96% 56%;
   --color-sidebar-accent-foreground: 0 0% 100%;
   --color-sidebar-border: 220 13% 91%;
-  --color-sidebar-ring: 195 100% 13%;
+  --color-sidebar-ring: 0 84% 50%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -49,43 +47,85 @@
     --color-card-foreground: 210 40% 98%;
     --color-popover: 215 28% 17%;
     --color-popover-foreground: 210 40% 98%;
-    --color-primary: 199 89% 48%;
-    --color-primary-foreground: 222 84% 5%;
-    --color-secondary: 258 90% 66%;
+    --color-primary: 0 72% 51%;
+    --color-primary-foreground: 0 0% 100%;
+    --color-secondary: 43 96% 56%;
     --color-secondary-foreground: 0 0% 100%;
     --color-muted: 215 32% 27%;
     --color-muted-foreground: 217 32% 65%;
-    --color-accent: 258 90% 66%;
+    --color-accent: 43 96% 56%;
     --color-accent-foreground: 0 0% 100%;
     --color-destructive: 0 63% 31%;
     --color-destructive-foreground: 0 0% 100%;
     --color-border: 215 32% 27%;
     --color-input: 215 28% 17%;
-    --color-ring: 199 89% 48%;
-    --color-chart-1: 217 32% 65%;
-    --color-chart-2: 258 90% 66%;
-    --color-chart-3: 0 63% 31%;
-    --color-chart-4: 43 96% 56%;
-    --color-chart-5: 199 89% 48%;
+    --color-ring: 0 72% 51%;
+    --color-chart-1: 0 72% 51%;
+    --color-chart-2: 43 96% 56%;
+    --color-chart-3: 217 32% 65%;
+    --color-chart-4: 215 32% 27%;
+    --color-chart-5: 215 28% 17%;
     --color-sidebar: 215 28% 17%;
     --color-sidebar-foreground: 210 40% 98%;
-    --color-sidebar-primary: 199 89% 48%;
-    --color-sidebar-primary-foreground: 222 84% 5%;
-    --color-sidebar-accent: 258 90% 66%;
+    --color-sidebar-primary: 0 72% 51%;
+    --color-sidebar-primary-foreground: 0 0% 100%;
+    --color-sidebar-accent: 43 96% 56%;
     --color-sidebar-accent-foreground: 0 0% 100%;
     --color-sidebar-border: 215 32% 27%;
-    --color-sidebar-ring: 199 89% 48%;
+    --color-sidebar-ring: 0 72% 51%;
   }
 }
 
-/* Fixed body styling for proper Tailwind CSS v4 compatibility */
+/* Enhanced body styling with better typography and spacing */
 body {
   background-color: hsl(var(--color-background));
   color: hsl(var(--color-foreground));
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
 }
 
-/* Added proper border color inheritance */
+/* Added custom scrollbar styling for better aesthetics */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--color-muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--color-border));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--color-muted-foreground) / 0.3);
+}
+
+/* Enhanced border color inheritance */
 * {
   border-color: hsl(var(--color-border));
+}
+
+/* Added smooth transitions for better UX */
+.transition-all {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Added glass morphism effect for cards */
+.glass-card {
+  background: hsl(var(--color-card) / 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid hsl(var(--color-border) / 0.2);
+}
+
+/* Added gradient backgrounds for enhanced visual appeal */
+.gradient-bg {
+  background: linear-gradient(135deg, hsl(var(--color-background)) 0%, hsl(var(--color-muted)) 100%);
+}
+
+.primary-gradient {
+  background: linear-gradient(135deg, hsl(var(--color-primary)) 0%, hsl(var(--color-primary) / 0.8) 100%);
 }
